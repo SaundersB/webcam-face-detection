@@ -3,6 +3,8 @@ import cv2
 import datetime
 import os
 
+#  Make sure  OpenCV is installed and can be imported by your Python interpretor.
+
 cascPath="D:\\root\\src\\opencv\\sources\\build\\install\\etc\\haarcascades\\haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
 cap = cv2.VideoCapture(0)
@@ -34,7 +36,7 @@ while(True):
 	# Draw a rectangle around the faces
 	for (x, y, w, h) in faces:
 		cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
-		face_frame =img[y: y+h,x:x+w]
+		face_frame =img[y:y+h,x:x+w]
 
 	if(len(faces)>0):
 		filename = datetime.datetime.now() .strftime ("%Y-%m-%d-%H.%M.%S")
@@ -48,7 +50,8 @@ while(True):
 	cv2.imshow("Camera #3", img) 
 
 	key = cv2.waitKey(10)
-	if key == 27:
+	# Key 32 is SpaceBar.
+	if key == 27 or key == 32:
 		break
 
     
